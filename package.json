@@ -1,0 +1,24 @@
+{
+  "name": "zeitgometer",
+  "version": "1.0.0",
+  "description": "Web crawler with IBM Watson enabled concept mapping",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AJPcodes/zeitgometer.git"
+  },
+  "author": "Allen Phelps github.com/ajpcodes (http://github.com/AJPcodes)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AJPcodes/zeitgometer/issues"
+  },
+  "homepage": "https://github.com/AJPcodes/zeitgometer#readme",
+  "dependencies": {
+    "dotenv": "^2.0.0",
+    "express": "^4.13.4",
+    "watson-developer-cloud": "^1.2.6"
+  }
+}
