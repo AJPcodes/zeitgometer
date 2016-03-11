@@ -6,23 +6,25 @@ const
   extend = require('util')._extend,
   watson = require('watson-developer-cloud'),
   async  = require('async'),
-  PORT = process.env.PORT || 3000;
+  PORT = process.env.PORT || 3000,
+  routes = require('./routes/');
 
-// Bootstrap application settings
+// Bluemix application settings
 require('dotenv').config();
 
+
 // if bluemix credentials exists, then override local
-var credentials = extend({
-  username: process.env.BLUEMIX_USERNAME,
-  password: process.env.BLUEMIX_PASS,
-  version: 'v2'
-}); // VCAP_SERVICES
+// var credentials = extend({
+//   username: process.env.BLUEMIX_USERNAME,
+//   password: process.env.BLUEMIX_PASS,
+//   version: 'v2'
+// }); // VCAP_SERVICES
 
-var corpus_id = process.env.CORPUS_ID || '/corpora/public/TEDTalks';
-var graph_id  = process.env.GRAPH_ID ||  '/graphs/wikipedia/en-latest';
+// var corpus_id = process.env.CORPUS_ID || '/corpora/public/TEDTalks';
+// var graph_id  = process.env.GRAPH_ID ||  '/graphs/wikipedia/en-latest';
 
-// Create the service wrapper
-var concept_insights = watson.concept_insights(credentials);
+// // Create the service wrapper
+// var concept_insights = watson.concept_insights(credentials);
 
 
 //search for a concept
@@ -56,8 +58,9 @@ var concept_insights = watson.concept_insights(credentials);
 //   }
 // });
 
+app.use(routes);
 
 
-
-app.listen(PORT);
-console.log('listening at:', PORT);
+app.listen(PORT, () => {
+  console.log(`listening at: ${PORT}`);
+});
