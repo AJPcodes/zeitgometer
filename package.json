@@ -4,7 +4,9 @@
   "description": "Web crawler with IBM Watson enabled concept mapping",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "serve": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -22,5 +24,8 @@
     "express": "^4.13.4",
     "lodash": "^4.6.1",
     "watson-developer-cloud": "^1.2.6"
+  },
+  "devDependencies": {
+    "nodemon": "^1.9.1"
   }
 }
