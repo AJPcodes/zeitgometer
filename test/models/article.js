@@ -28,5 +28,22 @@ module.exports = {
       done()
 
     });
+  },
+
+  getArticles: (done) => {
+
+    Article
+      .find()
+      .limit(10)
+      .sort('-date')
+      .exec((err, data)=>{
+        expect(data).be.a('array')
+        expect(data[0]).be.a('object')
+        expect(data[0]).have.property('_id')
+        done()
+      });
+
+
+
   }
 }
