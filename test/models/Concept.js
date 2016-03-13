@@ -1,25 +1,13 @@
 'use strict'
 
 const { db, expect } = require('../setup')
-const Article = require('../../app/models/Article')
+const Concept = require('../../app/models/Concept')
 
 module.exports = {
 
   saveNew: (done) => {
 
-    const obj = new Article({
-      title: 'Test',
-      url: 'www.google.com',
-      website: 'google',
-      concepts: [{
-        "score": 99,
-        "concept": {
-          "id": 'testId',
-          "label": 'search engine'
-        }
-      }],
-      date: (new Date())
-    });
+    const obj = new Concept();
 
     obj.save((err, result) => {
       if (err) throw err;
@@ -30,9 +18,9 @@ module.exports = {
     });
   },
 
-  getArticles: (done) => {
+  getConcepts: (done) => {
 
-    Article
+    Concept
       .find()
       .limit(10)
       .sort('-date')

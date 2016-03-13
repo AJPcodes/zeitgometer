@@ -6,13 +6,7 @@ const Article = mongoose.model('articles', mongoose.Schema({
     title: String,
     url: String,
     website: String,
-    concepts: [{
-      "score": Number,
-      "concept": {
-        "id": String,
-        "label": String
-      }
-    }],
+    concepts: [{}],
     date: { type: Date, default: Date.now }
 }));
 
