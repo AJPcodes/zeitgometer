@@ -4,7 +4,7 @@
   "description": "Web crawler with IBM Watson enabled concept mapping",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha -t 10000 --compilers js:babel-register",
+    "test": "set NODE_ENV=test&& mocha -t 10000 --compilers js:babel-register",
     "test:watch": "npm run test -- --watch",
 
     "start": "node index.js",
