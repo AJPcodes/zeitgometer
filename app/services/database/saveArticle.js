@@ -23,7 +23,7 @@ module.exports = (title, link, website) => {
 
 
   Article
-    .find({ title: title })
+    .find({ url: link })
     .exec((err,res) => {
       if (err) console.log(err)
 
