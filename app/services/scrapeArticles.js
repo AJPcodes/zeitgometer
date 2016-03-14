@@ -1,7 +1,7 @@
 "use strict"
 
 const   mongoose = require('mongoose'),
-    Timer = require('../../models/Timer');
+    Timer = require('../models/Timer');
 
 module.exports = () => {
 

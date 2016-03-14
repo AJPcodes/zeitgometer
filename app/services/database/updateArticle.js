@@ -1,7 +1,7 @@
 "use strict"
 
 const   mongoose = require('mongoose'),
-    Article = require('../models/Article');
+    Article = require('../../models/Article');
 
 module.exports = (articleObj, resObj) => {
 

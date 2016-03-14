@@ -3,7 +3,7 @@
 const cheerio = require('cheerio'),
   _ = require('lodash'),
   request = require('request'),
-  saveArticle = require('../saveArticle');
+  {saveArticle} = require('../database');
 
 module.exports = () => {
 

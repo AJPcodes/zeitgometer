@@ -6,8 +6,8 @@ const   mongoose = require('mongoose'),
     Article = require('../../models/Article'),
     Concept = require('../../models/Concept'),
     wiredMethods = require('../wired'),
-    updateArticle = require('../updateArticle'),
-    documentMethods = require('./document');
+    updateArticle = require('./updateArticle'),
+    documentMethods = require('../conceptInsights/document');
 
 module.exports = () => {
 

@@ -1,7 +1,7 @@
 "use strict"
 
 const   mongoose = require('mongoose'),
-    Article = require('../models/Article');
+    Article = require('../../models/Article');
 
 module.exports = (title, link, website) => {
 
@@ -17,7 +17,6 @@ module.exports = (title, link, website) => {
 
     articleToSave.save((err, result) => {
       if (err) throw err;
-
     })
 
   }
