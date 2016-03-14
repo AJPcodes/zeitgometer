@@ -1,6 +1,7 @@
 "use strict"
 const
   extend = require('util')._extend,
+  Q = require('q'),
   watson = require('watson-developer-cloud');
 
   //adds environmental variables from a local .env file
@@ -23,52 +24,68 @@ var concept_insights = watson.concept_insights(credentials);
 
 //analyze text
 
-const createDocument = (label, title, htmlInput) => {
+const createDocument = (articleObj, plainText) => {
 
-  var params = {
-    'id': '/corpora/co3daq7dif4de0/articles/documents/test',
+  let deffered = Q.defer();
+
+  let params = {
+    'id': `/corpora/co3daq7dif4de0/articles/documents/${articleObj._id}`,
     'document': {
-      'label': `${label}`,
+      'label': `${articleObj._id}`,
       'parts': [
         {
           'name': 'Title',
           'content-type': 'text/plain',
-          'data': `${title}`
+          'data': `${articleObj.title}`
         },
         {
           'name': 'Text',
           'content-type': 'text/plain',
-          'data': `${htmlInput}`
+          'data': `${plainText}`
         }
       ],
       'ttl_hours': 9001
     }
   }
 
-  concept_insights.corpora.createDocument(params, function(err,res) {
-    if (err)
-      console.log(err);
-    else {
-      console.log('Created document: ' + params.id)
+  concept_insights.corpora.createDocument(params, (err, res) => {
+    if (err) {
+      console.log(err)
     }
+
+      deffered.resolve(articleObj._id)
+
   });
+
+  return deffered.promise
 
 }
 
 const getConcepts = (documentId) => {
 
-  var docParams = {
-    'id': `${documentId}`,
-    'limit': 10
-  }
+  console.log('getting concepts for ', documentId)
 
-  concept_insights.corpora.getRelatedConcepts(docParams, function(err,res) {
-    if (err)
-      console.log(err);
-    else {
-      console.log(JSON.stringify(res, null, 2));
-    }
-  });
+  let deferred = Q.defer();
+
+  setTimeout(()=>{
+
+      var docParams = {
+        'id': `/corpora/co3daq7dif4de0/articles/documents/${documentId}`,
+        'limit': 50
+      }
+
+      concept_insights.corpora.getRelatedConcepts(docParams, function(err,res) {
+        if (err)
+          console.log(err);
+        else {
+          console.log(res)
+          deferred.resolve(res);
+        }
+      });
+
+  }, 10000)
+
+  return deferred.promise
 
 }
 

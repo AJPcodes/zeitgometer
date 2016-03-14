@@ -6,6 +6,7 @@ const   mongoose = require('mongoose'),
     Article = require('../../models/Article'),
     Concept = require('../../models/Concept'),
     wiredMethods = require('../wired'),
+    updateArticle = require('../updateArticle'),
     documentMethods = require('./document');
 
 module.exports = () => {
@@ -16,23 +17,28 @@ module.exports = () => {
     .exec((err, articlesToUpdate)=>{
       if (err) throw err;
 
-      update(articlesToUpdate);
+      updateArticles(articlesToUpdate);
 
     })
 
-  const update = (articlesToUpdate) => {
+  const updateArticles = (articlesToUpdate) => {
 
     articlesToUpdate.forEach((article) => {
 
 
       getText(article)
         .then((text)=>{
-          console.log(text)
-          console.log('gotText')
+          documentMethods.createDocument(article, text)
+          .then(documentMethods.getConcepts)
+            .then((res)=>{
+
+              updateArticle(article, res)
+
+
+            })
+          })
+
         })
-
-
-    })
   }
 
   const getText = (article) => {
