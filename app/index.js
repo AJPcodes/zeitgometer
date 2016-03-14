@@ -37,4 +37,5 @@ db.once('open', () => {
 // require('./services/wired').topArticles()
 // require('./services/conceptInsights/updateDatabase')()
 // require('./services/conceptInsights/mapConcepts')()
+require('./services/conceptInsights/getPopularConcepts')()
 
