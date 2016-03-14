@@ -7,7 +7,8 @@ const Article = mongoose.model('articles', mongoose.Schema({
     url: String,
     website: String,
     concepts: [{}],
-    date: { type: Date, default: Date.now }
+    date: { type: Date, default: Date.now },
+    mapped: ({ type: Boolean, default: false })
 }));
 
 module.exports = Article;

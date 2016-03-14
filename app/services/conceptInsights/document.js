@@ -63,7 +63,7 @@ const createDocument = (articleObj, plainText) => {
 
 const getConcepts = (documentId) => {
 
-  console.log('getting concepts for ', documentId)
+  // console.log('getting concepts for ', documentId)
 
   let deferred = Q.defer();
 
@@ -78,7 +78,7 @@ const getConcepts = (documentId) => {
         if (err)
           console.log(err);
         else {
-          console.log(res)
+          // console.log(res)
           deferred.resolve(res);
         }
       });
