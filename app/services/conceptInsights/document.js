@@ -37,7 +37,7 @@ const createDocument = (label, title, htmlInput) => {
         },
         {
           'name': 'Text',
-          'content-type': 'text/html',
+          'content-type': 'text/plain',
           'data': `${htmlInput}`
         }
       ],

@@ -34,5 +34,7 @@ db.once('open', () => {
 // require('./services/conceptInsights/createCorpus')()
 // require('./services/conceptInsights/document').createDocument()
 // require('./services/conceptInsights/document').getConcepts('/corpora/co3daq7dif4de0/articles/documents/test')
+// require('./services/wired').topArticles()
+// require('./services/conceptInsights/updateDatabase')()
 
-require('./services/wired').topArticles()
+

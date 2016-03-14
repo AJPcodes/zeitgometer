@@ -5,7 +5,7 @@ const cheerio = require('cheerio'),
   request = require('request'),
   saveArticle = require('../saveArticle');
 
-module.exports = (callback) => {
+module.exports = () => {
 
 
   const url = 'http://www.wired.com';

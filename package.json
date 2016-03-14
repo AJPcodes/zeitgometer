@@ -6,7 +6,6 @@
   "scripts": {
     "test": "set NODE_ENV=test&& mocha -t 10000 --compilers js:babel-register",
     "test:watch": "npm run test -- --watch",
-
     "start": "node index.js",
     "serve": "nodemon index.js"
   },
@@ -28,6 +27,7 @@
     "express": "^4.13.4",
     "lodash": "^4.6.1",
     "mongoose": "^4.4.7",
+    "q": "^1.4.1",
     "request": "^2.69.0",
     "watson-developer-cloud": "^1.2.6"
   },
