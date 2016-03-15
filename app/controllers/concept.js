@@ -13,9 +13,6 @@ module.exports = {
 
     let {conceptId} = req.params
 
-    console.log(req.params)
-    console.log('looking up :', conceptId)
-
     if (!conceptId) {
       res.status(204).send()
     } else {

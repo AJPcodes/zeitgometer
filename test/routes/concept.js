@@ -16,6 +16,13 @@ module.exports = {
       .end(done)
   },
 
+  "badRequest": (done) => {
+    request
+      .get('/concept/badRequest')
+      .expect(204)
+      .end(done)
+  },
+
   json: (done) => {
     request
       .get('/concept/56e8459f65dbcddc52961b70')
