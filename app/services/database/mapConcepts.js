@@ -8,43 +8,55 @@ const   mongoose = require('mongoose'),
 
 module.exports = () => {
 
+    console.log('mapping articles to concepts')
 
   Article.find()
     .exec((err, collection) => {
       collection.forEach((article)=>{
 
-        article.concepts.forEach((articleConcept)=>{
+        if (!article.mapped) {
 
-          Concept.findOne({label: articleConcept.concept.label})
-            .exec((err, concept)=>{
+        article.mapped = true;
 
-              if (!concept) {
+        article.save((err, result) => {
+          if (err) throw err;
+        })
 
-                console.log('making new concept', articleConcept.concept.label)
+          article.concepts.forEach((articleConcept)=>{
 
-                let newConcept = new Concept({
-                  "id": articleConcept.concept.id,
-                  "label": articleConcept.concept.label,
-                  "articles": [article._id]
-                })
+            Concept.findOne({label: articleConcept.concept.label})
+              .exec((err, concept)=>{
 
-                newConcept.save((err, result) => {
-                  if (err) throw err;
-                })
-              } else
-              // if the concept exists, add the article id to it's list
-              {
-               // console.log(concept)
-                if (concept.articles.indexOf(article._id) == -1) {
-                  console.log('common concept')
-                  concept.articles.push(article._id)
-                  concept.save((err, result) => {
-                   if (err) throw err;
+                if (!concept) {
+
+                  console.log('making new concept', articleConcept.concept.label)
+
+                  let newConcept = new Concept({
+                    "id": articleConcept.concept.id,
+                    "label": articleConcept.concept.label,
+                    "articles": [article._id]
                   })
-                }//end if
-              } ///end else
-            })//end exec
-        }) //end for each
+
+                  newConcept.save((err, result) => {
+                    if (err) throw err;
+                  })
+                } else
+                // if the concept exists, add the article id to it's list
+                {
+                 // console.log(concept)
+                  if (concept.articles.indexOf(article._id) == -1) {
+                    console.log('common concept')
+                    concept.articles.push(article._id)
+                    concept.save((err, result) => {
+                     if (err) throw err;
+                    })
+                  }//end if
+                } ///end else
+              })//end exec
+          }) //end for each
+
+        }//end if
+
       }) //end for each
     }) //end exec
 

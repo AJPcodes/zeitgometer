@@ -1,11 +1,8 @@
 "use strict"
 
-module.exports = {
+module.exports.getPopularConcepts = require("./database/getPopularConcepts")
+module.exports.mapConcepts = require("./database/mapConcepts")
+module.exports.saveArticle = require("./database/saveArticle")
+module.exports.updateArticle = require("./database/updateArticle")
+module.exports.updateDatabaseArticles = require("./database/updateDatabaseArticles")
 
-  getPopularConcepts: require("./database/getPopularConcepts"),
-  mapConcepts: require("./database/mapConcepts"),
-  saveArticle: require("./database/saveArticle"),
-  updateArticle: require("./database/updateArticle"),
-  updateDatabaseArticles: require("./database/updateDatabaseArticles"),
-
-}

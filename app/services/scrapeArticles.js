@@ -1,33 +1,43 @@
 "use strict"
 
 const   mongoose = require('mongoose'),
+    wired = require('./wired'),
     Timer = require('../models/Timer');
 
 module.exports = () => {
+  console.log('checking for articles')
 
+  Timer.findOne().sort('-_id').exec((err, stamp) => {
+      if (err) throw err;
+      const cacheTime = 1 * 60 * 1000; //1 min
 
-  // Timer.findOne().sort('-_id').exec((err, doc) => {
-  //     if (err) throw err;
-  //     const cacheTime = 60 * 60 * 1000; //1 hour
+      console.log(stamp)
 
-  //     let diff;
+      let diff;
 
-  //     if (doc) {
-  //     const diff = (new Date() - doc._id.getTimestamp()) - cacheTime;
-  //     }
-  //     if (diff && diff < 0) {
-  //         console.log('this news is fine!');
-  //        callback(doc.top);
-  //     } else {
+      if (stamp) {
+       diff = (new Date() - stamp._id.getTimestamp()) - cacheTime;
+      }
 
+      console.log(diff)
 
-  const timestamp = new Timer({
-   date: (new Date())
-  });
+      if (diff && diff > 0) {
+        console.log('It has been one hour');
+        wired.topArticles()
 
-  timestamp.save((err, result) => {
-    if (err) throw err;
-  });
+        const timestamp = new Timer({
+         date: (new Date())
+        });
+
+        timestamp.save((err, result) => {
+          if (err) throw err;
+        });
+
+      } else {
+        console.log('It has not been one hour', diff)
+      }
+
+  })
 
 
 

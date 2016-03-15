@@ -8,9 +8,18 @@ const cheerio = require('cheerio'),
 console.log('databaseMethods:', databaseMethods);
 
 module.exports = () => {
+  const url = 'http://www.slate.com/full_slate.html'
 
+  equest.get(url, (err, response, html) => {
+    if (err) throw err;
 
-  const url = 'http://www.wired.com';
+    const $ = cheerio.load(html);
+
+    let $headlines = $(".bodyfullslate .long-hed");
+    console.log($headlines)
+  }
+/*
+  const url = 'http://www.slate.com';
 
   request.get(url, (err, response, html) => {
     if (err) throw err;
@@ -47,6 +56,8 @@ module.exports = () => {
     }) //end range
 
   })//end request
+
+  */
 }
 
 

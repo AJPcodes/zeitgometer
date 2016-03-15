@@ -36,6 +36,24 @@ db.once('open', () => {
 // require('./services/conceptInsights/document').getConcepts('/corpora/co3daq7dif4de0/articles/documents/test')
 // require('./services/wired').topArticles()
 // require('./services/conceptInsights/updateDatabase')()
-// require('./services/conceptInsights/mapConcepts')()
 // require('./services/conceptInsights/getPopularConcepts')()
 
+//check for new articles every 5 min
+setInterval(
+  require('./services/scrapeArticles'),
+  5 * 60 * 1000)
+
+//update database every 5 minutes
+setInterval(
+  require('./services/database').updateDatabaseArticles,
+  5 * 60 * 1000)
+
+//update database every 5 minutes
+setInterval(
+  require('./services/database').mapConcepts,
+  5 * 60 * 1000)
+
+//check for new articles and perform database maintenance
+require('./services/scrapeArticles')()
+require('./services/database').updateDatabaseArticles()
+require('./services/database').mapConcepts()

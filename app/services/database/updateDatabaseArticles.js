@@ -10,6 +10,7 @@ const   mongoose = require('mongoose'),
     documentMethods = require('../conceptInsights/document');
 
 module.exports = () => {
+  console.log('updating articles')
 
   Article
     .find()
