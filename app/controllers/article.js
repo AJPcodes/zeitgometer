@@ -18,6 +18,12 @@ module.exports = {
     } else {
       database.getArticleById(articleId, (data) => {res.status(200).json({data: data})}, res)
     }
+  },
+
+  getRecent: (req, res) => {
+
+    database.getRecentArticles((data) => {res.status(200).json({data: data})}, res)
+
   }
 
 } //end module exports

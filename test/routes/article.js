@@ -42,6 +42,23 @@ module.exports = {
 
         done()
       })
+  },
+
+    recent: (done) => {
+    request
+      .get('/article/recent')
+      .end((err, res) => {
+        expect(res.body).to.have.property('data')
+
+        let allKeys = Object.keys(res.body.data)
+        expect(allKeys.length).to.equal(20)
+        expect(res.body.data[allKeys[0]]).to.have.property('_id')
+        expect(res.body.data[allKeys[0]]).to.have.property('url')
+        expect(res.body.data[allKeys[0]]).to.have.property('title')
+
+
+        done()
+      })
   }
 }
 
