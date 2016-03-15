@@ -5,7 +5,7 @@ let mongoose = require('mongoose');
 const Concept = mongoose.model('concepts', mongoose.Schema({
   "id": String,
   "label": String,
-  "articles": [{}]
+  "articles": [String] //article _id
 }));
 
 module.exports = Concept;

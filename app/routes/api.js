@@ -4,8 +4,8 @@ const express = require('express');
 const path = require('path');
 
 const router = express.Router();
-const cnn = require('../controllers/cnn.js');
+const popular = require('../controllers/popular.js');
 
-router.get('/api/cnn', cnn.api);
+router.get('/api/popular', popular.getPopular);
 
 module.exports = router;

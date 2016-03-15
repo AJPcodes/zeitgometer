@@ -5,12 +5,29 @@ const cheerio = require('cheerio'),
   request = require('request'),
   databaseMethods = require('../database');
 
-console.log('databaseMethods:', databaseMethods);
-
 module.exports = () => {
+  const url = 'http://www.slate.com/full_slate.html'
 
+  request.get(url, (err, response, html) => {
+    if (err) throw err
 
-  const url = 'http://www.wired.com';
+    const $ = cheerio.load(html)
+
+    let $headlines = $(".bodyfullslate .long-hed")
+
+    _.range(1, 30).forEach(i => {
+      const $headline = $headlines.eq(i)
+
+      let title = $headline.find('span.hed').text();
+      let linkUrl = $headline.find('a').attr('href');
+
+      databaseMethods.saveArticle(title, linkUrl, 'slate')
+
+    })
+  })
+}
+/*
+  const url = 'http://www.slate.com';
 
   request.get(url, (err, response, html) => {
     if (err) throw err;
@@ -47,6 +64,8 @@ module.exports = () => {
     }) //end range
 
   })//end request
-}
+
+  */
+
 
 

@@ -31,8 +31,25 @@ db.once('open', () => {
 
 });
 
-// require('./services/conceptInsights/createCorpus')()
-// require('./services/conceptInsights/document').createDocument()
-// require('./services/conceptInsights/document').getConcepts('/corpora/co3daq7dif4de0/articles/documents/test')
+//check for new articles every 5 min
+setInterval(
+  require('./services/scrapeArticles'),
+  5 * 60 * 1000)
 
-require('./services/wired').topArticles()
+//update database every 5 minutes
+setInterval(
+  require('./services/database').updateDatabaseArticles,
+  5 * 60 * 1000)
+
+//update database every 5 minutes
+setInterval(
+  require('./services/database').mapConcepts,
+  5 * 60 * 1000)
+
+//check for new articles and perform database maintenance
+require('./services/scrapeArticles')()
+require('./services/database').updateDatabaseArticles()
+require('./services/database').mapConcepts()
+
+
+require('./services/slate').getArticleText("http://www.slate.com/blogs/browbeat/2016/03/14/president_obama_and_lin_manuel_miranda_just_freestyled_in_the_rose_garden.html")
