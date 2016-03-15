@@ -8,8 +8,6 @@ const cheerio = require('cheerio'),
 
 module.exports = (url) => {
 
-
-/*
   let deferred = Q.defer();
 
     request.get(url, (err, response, html) => {
@@ -17,7 +15,8 @@ module.exports = (url) => {
 
       const $ = cheerio.load(html);
 
-      let articleText = $("#start-of-content p").text();
+      console.log('getting text for ', url)
+      let articleText = $("#story-0 p").text();
 
       deferred.resolve(articleText)
 
@@ -25,6 +24,6 @@ module.exports = (url) => {
 
 
   return deferred.promise;
-*/
+
 }
 

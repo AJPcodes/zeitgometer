@@ -15,7 +15,7 @@ module.exports = (url) => {
 
       const $ = cheerio.load(html);
 
-      let articleText = $("#start-of-content p").text();
+      let articleText = $("#article-0 p").text();
 
       deferred.resolve(articleText)
 

@@ -14,13 +14,13 @@ module.exports = () => {
     .exec((err, collection) => {
       collection.forEach((article)=>{
 
-        if (!article.mapped) {
+        // if (!article.mapped) {
 
-        article.mapped = true;
+        // article.mapped = true;
 
-        article.save((err, result) => {
-          if (err) throw err;
-        })
+        // article.save((err, result) => {
+        //   if (err) throw err;
+        // })
 
           article.concepts.forEach((articleConcept)=>{
 
@@ -55,7 +55,7 @@ module.exports = () => {
               })//end exec
           }) //end for each
 
-        }//end if
+        // }//end if
 
       }) //end for each
     }) //end exec

@@ -2,16 +2,15 @@
 
 const   mongoose = require('mongoose'),
     wired = require('./wired'),
+    slate = require('./slate'),
     Timer = require('../models/Timer');
 
 module.exports = () => {
-  console.log('checking for articles')
 
   Timer.findOne().sort('-_id').exec((err, stamp) => {
       if (err) throw err;
-      const cacheTime = 1 * 60 * 1000; //1 min
+      const cacheTime = 60 * 60 * 1000; //1 min
 
-      console.log(stamp)
 
       let diff;
 
@@ -19,11 +18,11 @@ module.exports = () => {
        diff = (new Date() - stamp._id.getTimestamp()) - cacheTime;
       }
 
-      console.log(diff)
 
       if (diff && diff > 0) {
         console.log('It has been one hour');
         wired.topArticles()
+        slate.topArticles()
 
         const timestamp = new Timer({
          date: (new Date())

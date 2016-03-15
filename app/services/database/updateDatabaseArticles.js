@@ -6,11 +6,11 @@ const   mongoose = require('mongoose'),
     Article = require('../../models/Article'),
     Concept = require('../../models/Concept'),
     wiredMethods = require('../wired'),
+    slateMethods = require('../slate'),
     updateArticle = require('./updateArticle'),
     documentMethods = require('../conceptInsights/document');
 
 module.exports = () => {
-  console.log('updating articles')
 
   Article
     .find()
@@ -18,6 +18,7 @@ module.exports = () => {
     .exec((err, articlesToUpdate)=>{
       if (err) throw err;
 
+      // console.log(articlesToUpdate)
       updateArticles(articlesToUpdate);
 
     })
@@ -25,7 +26,6 @@ module.exports = () => {
   const updateArticles = (articlesToUpdate) => {
 
     articlesToUpdate.forEach((article) => {
-
 
       getText(article)
         .then((text)=>{
@@ -49,6 +49,11 @@ module.exports = () => {
     if (article.website == 'wired') {
 
       deferred.resolve(wiredMethods.getArticleText(article.url))
+
+    } else if (article.website == 'slate') {
+
+      deferred.resolve(slateMethods.getArticleText(article.url))
+
 
     }
 
