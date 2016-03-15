@@ -29,7 +29,6 @@ module.exports = () => {
 
                 if (!concept) {
 
-                  console.log('making new concept', articleConcept.concept.label)
 
                   let newConcept = new Concept({
                     "id": articleConcept.concept.id,
@@ -45,7 +44,6 @@ module.exports = () => {
                 {
                  // console.log(concept)
                   if (concept.articles.indexOf(article._id) == -1) {
-                    console.log('common concept')
                     concept.articles.push(article._id)
                     concept.save((err, result) => {
                      if (err) throw err;

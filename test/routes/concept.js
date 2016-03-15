@@ -9,22 +9,28 @@ module.exports = {
       done()
   },
 
+  "204": (done) => {
+    request
+      .get('/concept/')
+      .expect(204)
+      .end(done)
+  },
+
   json: (done) => {
     request
-      .get('/popular')
+      .get('/concept/56e8459f65dbcddc52961b70')
       .expect('Content-Type', /json/)
       .end(done)
   },
 
   hasProperties: (done) => {
     request
-      .get('/popular')
+      .get('/concept/56e8459f65dbcddc52961b70')
       .end((err, res) => {
         expect(res.body).to.have.property('data')
 
-        let allKeys = Object.keys(res.body.data)
-
-        expect(res.body.data[allKeys[0]]).to.have.property('articles')
+        // let allKeys = Object.keys(res.body.data)
+        // expect(res.body.data[allKeys[0]]).to.have.property('articles')
 
 
         done()
