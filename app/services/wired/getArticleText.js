@@ -11,11 +11,11 @@ module.exports = (url) => {
   let deferred = Q.defer();
 
     request.get(url, (err, response, html) => {
-      if (err) throw err;
+      if (err) console.log(err);
 
       const $ = cheerio.load(html);
 
-      let articleText = $("#article-0 p").text();
+      let articleText = $("#start-of-content p").text();
 
       deferred.resolve(articleText)
 
