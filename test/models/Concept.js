@@ -1,6 +1,6 @@
 'use strict'
 
-const { db, expect } = require('../setup')
+const { expect } = require('../setup')
 const Concept = require('../../app/models/Concept')
 
 module.exports = {

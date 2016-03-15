@@ -4,8 +4,8 @@ const express = require('express');
 
 const router = express.Router();
 
-const api = require('./api.js');
+const popular = require('./popular.js');
 
-router.use(api);
+router.use(popular);
 
 module.exports = router;

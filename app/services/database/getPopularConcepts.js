@@ -11,7 +11,7 @@ module.exports = (callback) => {
   let data = {}
 
   Concept.find()
-    .$where('this.articles.length > 1')
+    .$where('this.articles.length > 4')
     .exec((err, collection)=>{
        if (err) throw err
 
