@@ -5,16 +5,17 @@ const   mongoose = require('mongoose'),
     Concept = require('../../models/Concept');
 
 
-module.exports = (conceptId, callback) => {
+module.exports = (conceptId, callback, res) => {
 
 
   let data = {}
 
   Concept.findById(conceptId, (err, concept)=>{
-    if (err) throw err
+    if (err)  console.log(err)
+
 
     if (!concept) {
-      res.status(204).send()
+      res.status(204).send({data: null})
     } else {
 
       let bunchOfCallBacks = [];

@@ -11,12 +11,12 @@ module.exports = {
 
   get: (req, res) => {
 
-    let {conceptId} = req.params
+    let {articleId} = req.params
 
-    if (!conceptId) {
+    if (!articleId) {
       res.status(204).send()
     } else {
-      database.getConceptById(conceptId, (data) => {res.status(200).json({data: data})}, res)
+      database.getArticleById(articleId, (data) => {res.status(200).json({data: data})}, res)
     }
   }
 

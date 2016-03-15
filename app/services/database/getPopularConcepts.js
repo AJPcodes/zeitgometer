@@ -29,11 +29,14 @@ module.exports = (callback) => {
             Article.findOne({_id: articleId})
             .exec((err, article)=>{
               if (err) {reject(); throw err}
-              data[concept.label].articles.push({
-                url: article.url,
-                title: article.title,
-                id: article._id
-              })
+
+              if (article) {
+                  data[concept.label].articles.push({
+                  url: article.url,
+                  title: article.title,
+                  id: article._id
+                })
+              }
               resolve()
             })
           }) //end promise
