@@ -31,6 +31,7 @@ module.exports = (callback) => {
               if (err) {reject(); throw err}
 
               if (article) {
+                  data[concept.label]._id = concept._id
                   data[concept.label].articles.push({
                   url: article.url,
                   title: article.title,
