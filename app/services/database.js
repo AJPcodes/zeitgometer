@@ -1,6 +1,9 @@
 "use strict"
 
 module.exports.getPopularConcepts = require("./database/getPopularConcepts")
+module.exports.getConceptById = require("./database/getConceptById")
+module.exports.getArticleById = require("./database/getArticleById")
+module.exports.getRecentArticles = require("./database/getRecentArticles")
 module.exports.mapConcepts = require("./database/mapConcepts")
 module.exports.saveArticle = require("./database/saveArticle")
 module.exports.updateArticle = require("./database/updateArticle")

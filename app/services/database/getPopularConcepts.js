@@ -11,7 +11,7 @@ module.exports = (callback) => {
   let data = {}
 
   Concept.find()
-    .$where('this.articles.length > 1')
+    .$where('this.articles.length > 4')
     .exec((err, collection)=>{
        if (err) throw err
 
@@ -29,11 +29,15 @@ module.exports = (callback) => {
             Article.findOne({_id: articleId})
             .exec((err, article)=>{
               if (err) {reject(); throw err}
-              data[concept.label].articles.push({
-                url: article.url,
-                title: article.title,
-                id: article._id
-              })
+
+              if (article) {
+                  data[concept.label]._id = concept._id
+                  data[concept.label].articles.push({
+                  url: article.url,
+                  title: article.title,
+                  id: article._id
+                })
+              }
               resolve()
             })
           }) //end promise

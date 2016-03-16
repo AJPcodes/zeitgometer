@@ -1,6 +1,6 @@
 'use strict'
 
-const { db, expect } = require('../setup')
+const { expect } = require('../setup')
 const Article = require('../../app/models/Article')
 
 module.exports = {
@@ -18,7 +18,9 @@ module.exports = {
           "label": 'search engine'
         }
       }],
-      date: (new Date())
+      date: (new Date()),
+      mapped: false
+
     });
 
     obj.save((err, result) => {
