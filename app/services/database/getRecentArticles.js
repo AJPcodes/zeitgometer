@@ -8,6 +8,7 @@ module.exports = (callback, res) => {
   let data = {}
 
   Article.find()
+    .where({ 'concepts': { $ne: [] } })
     .sort({'date': -1})
     .limit(20)
     .exec((err, articles)=>{
