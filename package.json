@@ -30,10 +30,10 @@
     "mongoose": "^4.4.7",
     "q": "^1.4.1",
     "request": "^2.69.0",
-    "supertest": "^1.2.0",
     "watson-developer-cloud": "^1.2.6"
   },
   "devDependencies": {
+    "supertest": "^1.2.0",
     "chai": "^3.5.0",
     "mocha": "^2.4.5",
     "nodemon": "^1.9.1"
