@@ -16,6 +16,8 @@ module.exports = () => {
 
       if (stamp) {
        diff = (new Date() - stamp._id.getTimestamp()) - cacheTime;
+      } else {
+        diff = 1;
       }
 
 
