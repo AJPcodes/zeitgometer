@@ -83,7 +83,7 @@ const getConcepts = (documentId) => {
         }
       });
 
-  }, 10000)
+  }, 15000)
 
   return deferred.promise
 
