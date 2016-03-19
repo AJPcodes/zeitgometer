@@ -4,11 +4,11 @@ let DB_NAME = process.env.NODE_ENV == 'test' ? "zeitgometerTest" : "zeitgometer"
 
 const
   express = require('express'),
+  cors = require('cors'),
   app = express(),
   async  = require('async'),
   routes = require('./routes/'),
   mongoose = require('mongoose'),
-  cors = require('cors'),
   PORT = process.env.PORT || 3000,
   MONGODB_HOST = process.env.MONGODB_HOST || 'localhost',
   MONGODB_PORT = process.env.MONGODB_PORT || '27017',
@@ -23,7 +23,7 @@ mongoose.connect(MONGODB_URL);
 let db = mongoose.connection;
 
 //middleware to allows CORS
-app.use(cors());
+app.use(cors())
 
 app.use(routes)
 
