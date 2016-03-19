@@ -8,6 +8,7 @@ const
   async  = require('async'),
   routes = require('./routes/'),
   mongoose = require('mongoose'),
+  cors = require('cors'),
   PORT = process.env.PORT || 3000,
   MONGODB_HOST = process.env.MONGODB_HOST || 'localhost',
   MONGODB_PORT = process.env.MONGODB_PORT || '27017',
@@ -22,24 +23,7 @@ mongoose.connect(MONGODB_URL);
 let db = mongoose.connection;
 
 //middleware to allows CORS
-app.use(function (req, res, next) {
-
-    // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', '*');
-
-    // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
-    // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-
-    // Set to true if you need the website to include cookies in the requests sent
-    // to the API (e.g. in case you use sessions)
-    res.setHeader('Access-Control-Allow-Credentials', true);
-
-    // Pass to next layer of middleware
-    next();
-});
+app.use(cors({origin: '*'}));
 
 app.use(routes)
 
