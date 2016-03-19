@@ -22,6 +22,9 @@ mongoose.connect(MONGODB_URL);
 let db = mongoose.connection;
 
 //middleware to allows CORS
+
+app.use(routes)
+
 app.use(function(req, res, next) {
     var oneof = false;
     if(req.headers.origin) {
@@ -49,8 +52,6 @@ app.use(function(req, res, next) {
     }
 });
 
-
-app.use(routes)
 
 db.once('open', () => {
 
