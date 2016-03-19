@@ -23,7 +23,7 @@ mongoose.connect(MONGODB_URL);
 let db = mongoose.connection;
 
 //middleware to allows CORS
-app.use(cors({origin: '*'}));
+app.use(cors());
 
 app.use(routes)
 
