@@ -62,4 +62,18 @@ require('./services/slate').getArticleText("http://www.slate.com/blogs/browbeat/
 
 const Concept = require('./models/Concept');
 
+
+  Concept.find()
+    .exec((err, collection)=>{
+       if (err) throw err
+
+      collection.forEach((concept)=>{
+
+        concept.size = concept.articles.length;
+        concept.save((err, result) => {
+          if (err) throw err;
+        })
+
+    })
+
 module.exports = app
