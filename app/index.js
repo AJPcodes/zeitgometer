@@ -4,7 +4,7 @@ let DB_NAME = process.env.NODE_ENV == 'test' ? "zeitgometerTest" : "zeitgometer"
 
 const
   express = require('express'),
-  cors = require('cors'),
+  cors = require('./middleware/cors'),
   app = express(),
   async  = require('async'),
   routes = require('./routes/'),
