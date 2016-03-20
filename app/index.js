@@ -76,4 +76,6 @@ const Concept = require('./models/Concept');
 
     })
 
+})
+
 module.exports = app
