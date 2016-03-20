@@ -11,9 +11,12 @@ module.exports = (callback) => {
   let data = {}
 
   Concept.find()
-    .$where('this.articles.length > 4')
+    .sort('-size')
+    .limit(40)
     .exec((err, collection)=>{
        if (err) throw err
+
+
 
       let bunchOfCallBacks = [];
 
@@ -45,7 +48,9 @@ module.exports = (callback) => {
         }) //end for each
       }) //end for each
 
-    Promise.all(bunchOfCallBacks).then(()=>{callback(data)});
+    Promise.all(bunchOfCallBacks).then(()=>{
+      callback(data)
+    });
     }) // end find
 } //end exports
 

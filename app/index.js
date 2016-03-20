@@ -58,5 +58,4 @@ require('./services/database').mapConcepts()
 
 require('./services/slate').getArticleText("http://www.slate.com/blogs/browbeat/2016/03/14/president_obama_and_lin_manuel_miranda_just_freestyled_in_the_rose_garden.html")
 
-
 module.exports = app

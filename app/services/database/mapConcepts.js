@@ -33,7 +33,8 @@ module.exports = () => {
                   let newConcept = new Concept({
                     "id": articleConcept.concept.id,
                     "label": articleConcept.concept.label,
-                    "articles": [article._id]
+                    "articles": [article._id],
+                    "size": 1
                   })
 
                   newConcept.save((err, result) => {
@@ -45,6 +46,7 @@ module.exports = () => {
                  // console.log(concept)
                   if (concept.articles.indexOf(article._id) == -1) {
                     concept.articles.push(article._id)
+                    concept.size = concept.size++;
                     concept.save((err, result) => {
                      if (err) throw err;
                     })
