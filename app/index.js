@@ -58,24 +58,4 @@ require('./services/database').mapConcepts()
 
 require('./services/slate').getArticleText("http://www.slate.com/blogs/browbeat/2016/03/14/president_obama_and_lin_manuel_miranda_just_freestyled_in_the_rose_garden.html")
 
-
-
-const Concept = require('./models/Concept');
-
-
-  Concept.find()
-    .exec((err, collection)=>{
-       if (err) throw err
-
-      collection.forEach((concept)=>{
-
-        concept.size = concept.articles.length;
-        concept.save((err, result) => {
-          if (err) throw err;
-        })
-
-    })
-
-})
-
 module.exports = app
