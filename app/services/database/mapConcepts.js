@@ -46,7 +46,12 @@ module.exports = () => {
                  // console.log(concept)
                   if (concept.articles.indexOf(article._id) == -1) {
                     concept.articles.push(article._id)
-                    concept.size = concept.size++;
+                    if (concept.size) {
+                      concept.size = concept.size++
+                    } else {
+                      concept.size = 1
+                    }
+
                     concept.save((err, result) => {
                      if (err) throw err;
                     })
