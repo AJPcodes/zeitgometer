@@ -1,5 +1,4 @@
 "use strict"
-
 const   mongoose = require('mongoose'),
     Article = require('../../models/Article'),
     Concept = require('../../models/Concept');
@@ -53,6 +52,5 @@ module.exports = (callback) => {
     });
     }) // end find
 } //end exports
-
 
 
