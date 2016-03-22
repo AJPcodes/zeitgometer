@@ -16,7 +16,7 @@ var credentials = extend({
   version: 'v2'
 }); // VCAP_SERVICES
 
-var corpus_id = process.env.CORPUS_ID || '/corpora/co3daq7dif4de0/articles';
+var corpus_id = process.env.CORPUS_ID || '/corpora/co3daq7dif4de0/articles1';
 var graph_id  = process.env.GRAPH_ID ||  '/graphs/wikipedia/en-latest';
 
 // Create the service wrapper

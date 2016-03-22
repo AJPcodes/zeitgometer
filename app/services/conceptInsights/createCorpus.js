@@ -16,7 +16,7 @@ var credentials = extend({
   version: 'v2'
 }); // VCAP_SERVICES
 
-var corpus_id = process.env.CORPUS_ID || '/corpora/co3daq7dif4de0/articles';
+var corpus_id = process.env.CORPUS_ID || '/corpora/co3daq7dif4de0/articles1';
 var graph_id  = process.env.GRAPH_ID ||  '/graphs/wikipedia/en-latest';
 
 // Create the service wrapper
@@ -33,9 +33,9 @@ module.exports = () => {
 
       //{ accounts: [ { account_id: 'asdasdasdf' } ] }
       var params = {
-        corpus: `/corpora/${res.accounts[0].account_id}/articles`,
+        corpus: `/corpora/${res.accounts[0].account_id}/articles1`,
         access: 'public',
-        ttl_hours: 200
+        ttl_hours: 672 //4 weeks
       }
       concept_insights.corpora.createCorpus(params, function(err,res) {
         if (err)
