@@ -29,7 +29,7 @@ const createDocument = (articleObj, plainText) => {
   let deffered = Q.defer();
 
   let params = {
-    'id': `/corpora/co3daq7dif4de0/articles/documents/${articleObj._id}`,
+    'id': `${corpus_id}/documents/${articleObj._id}`,
     'document': {
       'label': `${articleObj._id}`,
       'parts': [
@@ -70,7 +70,7 @@ const getConcepts = (documentId) => {
   setTimeout(()=>{
 
       var docParams = {
-        'id': `/corpora/co3daq7dif4de0/articles/documents/${documentId}`,
+        'id': `${corpus_id}/documents/${documentId}`,
         'limit': 50
       }
 
