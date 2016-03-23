@@ -9,6 +9,7 @@ describe('routes', () => {
     it('returns 204 (no data) when a bad id given', test['badRequest'])
     it('returns JSON object', test['json'])
     it('JSON object is a concept object', test['hasProperties'])
+    it('returns a list of treding topics at the trending endpoint', test['trending'])
 
   })
 })

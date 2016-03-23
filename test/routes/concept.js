@@ -42,6 +42,21 @@ module.exports = {
 
         done()
       })
+  },
+
+  trending: (done) => {
+    request
+      .get('/concept/trending')
+      .end((err, res) => {
+        expect(res.body).to.have.property('data')
+        expect(res.body.data).to.have.property('concepts')
+
+        // let allKeys = Object.keys(res.body.data)
+        // expect(res.body.data[allKeys[0]]).to.have.property('articles')
+
+
+        done()
+      })
   }
 }
 

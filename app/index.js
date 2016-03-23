@@ -36,25 +36,20 @@ db.once('open', () => {
 });
 
 //check for new articles every 5 min
-setInterval(
-  require('./services/scrapeArticles'),
-  5 * 60 * 1000)
+setInterval(() => {
 
-//update database every 5 minutes
-setInterval(
-  require('./services/database').updateDatabaseArticles,
-  5 * 60 * 1000)
+  require('./services/scrapeArticles')()
+  require('./services/database').updateDatabaseArticles()
+  require('./services/database').mapConcepts()
+  require('./services/database').mapTrending()
 
-//update database every 5 minutes
-setInterval(
-  require('./services/database').mapConcepts,
-  5 * 60 * 1000)
+},  5 * 60 * 1000)
+
 
 //check for new articles and perform database maintenance
 require('./services/scrapeArticles')()
 require('./services/database').updateDatabaseArticles()
 require('./services/database').mapConcepts()
-
-require('./services/slate').getArticleText("http://www.slate.com/blogs/browbeat/2016/03/14/president_obama_and_lin_manuel_miranda_just_freestyled_in_the_rose_garden.html")
+require('./services/database').mapTrending()
 
 module.exports = app

@@ -9,7 +9,14 @@ module.exports = {
     res.status(204).send()
   },
 
-  get: (req, res) => {
+  "trending": (req, res) => {
+    console.log('getting trending')
+
+    database.getTrending((data) => {res.status(200).json({data: data})}, res)
+
+  },
+
+  "get": (req, res) => {
 
     let {conceptId} = req.params
 
