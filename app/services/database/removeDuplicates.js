@@ -21,8 +21,11 @@ module.exports = () => {
           } else {
             //remove the entry
             // console.log('removing ',entry._id )
-            Concept.findById(entry._id)
-            .remove()
+
+          Concept.findById(entry._id, (err, concept) => {
+              if (err) console.log(err)
+              concept.remove()
+            })
           }
         })
 
