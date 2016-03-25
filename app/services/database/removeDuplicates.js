@@ -16,8 +16,8 @@ module.exports = () => {
 
         let dupes = {}
         collection.forEach((entry) => {
-          if (!dupes[entry.label]) {
-            dupes[entry.label] = true
+          if (!dupes[entry.label.replace(/ /g, "")]) {
+            dupes[.replace(/ /g, "")] = true
           } else {
             //remove the entry
             Concept.find({_id: entry._id})
