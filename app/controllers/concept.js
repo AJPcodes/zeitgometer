@@ -16,6 +16,11 @@ module.exports = {
 
   },
 
+  "listAll": (req, res) => {
+
+      database.getConceptNames((data) => {res.status(200).json({data: data})}, res)
+  },
+
   "get": (req, res) => {
 
     let {conceptId} = req.params

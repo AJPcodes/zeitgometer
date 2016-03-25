@@ -19,5 +19,3 @@ module.exports = (callback) => {
       callback(collection)
     }) // end find
 } //end exports
-
-
