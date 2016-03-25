@@ -20,7 +20,8 @@ module.exports = () => {
             dupes[entry.label.replace(/ /g, "")] = true
           } else {
             //remove the entry
-            Concept.find({_id: entry._id})
+            // console.log('removing ',entry._id )
+            Concept.findById(entry._id)
             .remove()
           }
         })
