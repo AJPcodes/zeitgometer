@@ -51,5 +51,6 @@ require('./services/scrapeArticles')()
 require('./services/database').updateDatabaseArticles()
 require('./services/database').mapConcepts()
 require('./services/database').mapTrending()
+require('./services/database').removeDuplicates()
 
 module.exports = app

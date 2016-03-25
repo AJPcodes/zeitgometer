@@ -11,4 +11,5 @@ module.exports.mapTrending = require("./database/mapTrending")
 module.exports.saveArticle = require("./database/saveArticle")
 module.exports.updateArticle = require("./database/updateArticle")
 module.exports.updateDatabaseArticles = require("./database/updateDatabaseArticles")
+module.exports.removeDuplicates = require("./database/removeDuplicates")
 
