@@ -12,16 +12,15 @@ module.exports = (callback, res) => {
     .exec((err, article)=>{
       if (err) console.log(err)
 
-        console.log(article._id)
+      if (!article) {
+        res.status(204).send({data: null})
+      } else {
+
         Trending.find({_id: {$ne: article._id}})
           .remove()
           .exec((err, oldTrends) => {
             if (err) console.log(err)
           })
-
-      if (!article) {
-        res.status(204).send({data: null})
-      } else {
 
          callback(article);
       } //end else
