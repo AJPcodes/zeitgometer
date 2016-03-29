@@ -33,6 +33,7 @@ module.exports = (conceptId, callback, res) => {
             data[concept.label].articles.push({
               url: article.url,
               title: article.title,
+              website: article.website.toUpperCase(),
               id: article._id
             })
             resolve()
