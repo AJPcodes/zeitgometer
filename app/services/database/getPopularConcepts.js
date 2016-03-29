@@ -10,8 +10,8 @@ module.exports = (callback) => {
   let data = {}
 
   Concept.find()
-    .where({size: {$gte: 10}})
-    .sort({size: -1})
+    .where('size').gt(10)
+    .sort('-size')
     .limit(40)
     .exec((err, collection)=>{
        if (err) throw err
