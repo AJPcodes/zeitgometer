@@ -39,7 +39,8 @@ module.exports = (callback) => {
                   data[concept.label].articles.push({
                   url: article.url,
                   title: article.title,
-                  id: article._id
+                  id: article._id,
+                  website: article.website
                 })
               }
               resolve()
