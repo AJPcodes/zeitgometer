@@ -22,6 +22,8 @@ module.exports = (callback) => {
 
       collection.forEach((concept)=>{
 
+        data[concept.label].size = concept.size
+        data[concept.label]._id = concept._id
         data[concept.label] = {}
         data[concept.label]['articles'] = []
 
@@ -34,7 +36,6 @@ module.exports = (callback) => {
               if (err) {reject(); throw err}
 
               if (article) {
-                  data[concept.label]._id = concept._id
                   data[concept.label].articles.push({
                   url: article.url,
                   title: article.title,
