@@ -22,9 +22,9 @@ module.exports = (callback) => {
 
       collection.forEach((concept)=>{
 
+        data[concept.label] = {}
         data[concept.label].size = concept.size
         data[concept.label]._id = concept._id
-        data[concept.label] = {}
         data[concept.label]['articles'] = []
 
         concept.articles.forEach((articleId)=>{
