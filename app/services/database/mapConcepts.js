@@ -14,13 +14,13 @@ module.exports = () => {
     .exec((err, collection) => {
       collection.forEach((article)=>{
 
-        // if (!article.mapped) {
+        if (!article.mapped) {
 
-        // article.mapped = true;
+        article.mapped = true;
 
-        // article.save((err, result) => {
-        //   if (err) throw err;
-        // })
+        article.save((err, result) => {
+          if (err) throw err;
+        })
 
           article.concepts.forEach((articleConcept)=>{
 
@@ -46,8 +46,9 @@ module.exports = () => {
                  // console.log(concept)
                   if (concept.articles.indexOf(article._id) == -1) {
                     concept.articles.push(article._id)
+
                     if (concept.size) {
-                      concept.size = concept.size++
+                      concept.size = concept.articles.length
                     } else {
                       concept.size = 1
                     }
