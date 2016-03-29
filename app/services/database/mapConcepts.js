@@ -22,6 +22,8 @@ module.exports = () => {
           if (err) throw err;
         })
 
+        }
+
           article.concepts.forEach((articleConcept)=>{
 
             Concept.findOne({label: articleConcept.concept.label})
