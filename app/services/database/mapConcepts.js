@@ -29,8 +29,8 @@ module.exports = () => {
             Concept.findOne({label: articleConcept.concept.label})
               .exec((err, concept)=>{
 
-                if (!concept) {
 
+                if (!concept) {
 
                   let newConcept = new Concept({
                     "id": articleConcept.concept.id,
@@ -46,19 +46,16 @@ module.exports = () => {
                 // if the concept exists, add the article id to it's list
                 {
                  // console.log(concept)
+                // console.log('updating', articleConcept.concept.label)
                   if (concept.articles.indexOf(article._id) == -1) {
                     concept.articles.push(article._id)
-
-                    if (concept.size) {
-                      concept.size = concept.articles.length
-                    } else {
-                      concept.size = 1
-                    }
-
-                    concept.save((err, result) => {
-                     if (err) throw err;
-                    })
                   }//end if
+                concept.size = concept.articles.length
+
+                concept.save((err, result) => {
+                  if (err) throw err;
+                })
+
                 } ///end else
               })//end exec
           }) //end for each
